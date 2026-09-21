@@ -23,6 +23,7 @@ Responsive Flutter UI
 Reusable widgets and components
 Riverpod state management
 Structured models and services
+
 🛠️ Tech Stack
 Technology	Purpose
 Flutter	Cross-platform application development
@@ -30,6 +31,8 @@ Dart	Programming language
 Riverpod	State management
 Figma	UI/UX design reference
 Material Design	UI foundation
+
+
 🏗️ Architecture
 
 The application separates major responsibilities into different layers:
@@ -41,6 +44,7 @@ Views — Application screens and UI
 Reusable Widgets — Shared UI components
 
 Authentication state and current-user/application data are handled separately to keep responsibilities clearly defined.
+
 
 ## 📸 Screenshots
 
@@ -59,6 +63,9 @@ Authentication state and current-user/application data are handled separately to
 ### Goal Selection
 
 ![Fitness Builder Goal Selection](screenshots/goalpickerscreen.png)
+
+
+
 🚀 Getting Started
 Prerequisites
 
@@ -75,6 +82,8 @@ flutter run
 📱 Platform
 
 The application is currently developed and tested for Android using Flutter.
+
+
 🎯 Project Purpose
 
 This project was created to strengthen practical Flutter development skills by taking a complete UI design and turning it into a functional mobile application.
@@ -88,6 +97,7 @@ User data management
 Responsive UI development
 Reusable Flutter components
 Translating Figma designs into working interfaces
+
 👨‍💻 Developer
 
 Ikechukwu Nnamdi
