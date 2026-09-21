@@ -8,6 +8,7 @@ import 'package:fitness_builder/widget/home_widgets/recommendation_widgets.dart'
 import 'package:fitness_builder/widget/home_widgets/weekly_challenge_widgets.dart';
 import 'package:fitness_builder/widget/home_widgets/article_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fitness_builder/providers/user_provider.dart';
 
 class HomePageView extends ConsumerStatefulWidget {
   const HomePageView({super.key});
@@ -19,6 +20,10 @@ class HomePageView extends ConsumerStatefulWidget {
 class _HomePageViewState extends ConsumerState<HomePageView> {
   @override
   Widget build(BuildContext context) {
+    print('>>> HOMEPAGE BUILDING');
+    print(StackTrace.current);
+
+    final user = ref.read(userProvider).user;
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(

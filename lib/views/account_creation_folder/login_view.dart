@@ -195,7 +195,9 @@ class _LoginViewScreenState extends ConsumerState<LoginViewScreen> {
                             ),
                             hintText: 'Email',
                             hintStyle: TextStyle(
-                              color: AppColors.textOnLight.withValues(alpha: 0.5),
+                              color: AppColors.textOnLight.withValues(
+                                alpha: 0.5,
+                              ),
                               fontSize: 14,
                             ),
                           ),
@@ -251,7 +253,9 @@ class _LoginViewScreenState extends ConsumerState<LoginViewScreen> {
                             ),
                             hintText: 'Password',
                             hintStyle: TextStyle(
-                              color: AppColors.textOnLight.withValues(alpha: 0.5),
+                              color: AppColors.textOnLight.withValues(
+                                alpha: 0.5,
+                              ),
                               fontSize: 14,
                             ),
                             suffixIcon: IconButton(
@@ -418,7 +422,7 @@ class _LoginViewScreenState extends ConsumerState<LoginViewScreen> {
                   onTapUp: (_) => setState(() => _isPressed3 = false),
                   onTapCancel: () => setState(() => _isPressed3 = false),
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const CreateAccountScreen(),

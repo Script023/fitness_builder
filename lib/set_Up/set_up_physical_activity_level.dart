@@ -18,7 +18,9 @@ class _SetUpPhysicalActivityLevelState
     extends ConsumerState<SetUpPhysicalActivityLevel> {
   @override
   Widget build(BuildContext context) {
-    final userLevel = ref.watch(userProvider).user?.userLevel;
+    final userLevel = ref.watch(
+      userProvider.select((state) => state.user?.userLevel),
+    );
     final isBeginnerSelected = userLevel == UserLevel.beginner;
     final isIntermediateSelected = userLevel == UserLevel.intermediate;
     final isAdvanceSelected = userLevel == UserLevel.advanced;
@@ -126,9 +128,9 @@ class _SetUpPhysicalActivityLevelState
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(38),
                         onTap: () {
-                          ref.read(userProvider.notifier).setUserLevel(
-                            UserLevel.beginner,
-                          );
+                          ref
+                              .read(userProvider.notifier)
+                              .setUserLevel(UserLevel.beginner);
                         },
                         child: SizedBox(
                           height: 64,
@@ -164,9 +166,9 @@ class _SetUpPhysicalActivityLevelState
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(38),
                         onTap: () {
-                          ref.read(userProvider.notifier).setUserLevel(
-                            UserLevel.intermediate,
-                          );
+                          ref
+                              .read(userProvider.notifier)
+                              .setUserLevel(UserLevel.intermediate);
                         },
                         child: SizedBox(
                           height: 64,
@@ -187,7 +189,7 @@ class _SetUpPhysicalActivityLevelState
                 ),
                 SizedBox(height: 36),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(38),
                     child: Material(
@@ -202,9 +204,9 @@ class _SetUpPhysicalActivityLevelState
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(38),
                         onTap: () {
-                          ref.read(userProvider.notifier).setUserLevel(
-                            UserLevel.advanced,
-                          );
+                          ref
+                              .read(userProvider.notifier)
+                              .setUserLevel(UserLevel.advanced);
                         },
                         child: SizedBox(
                           height: 64,
@@ -245,8 +247,7 @@ class _SetUpPhysicalActivityLevelState
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SetUpProfile(),
+                                    builder: (context) => const SetUpProfile(),
                                   ),
                                 );
                               }

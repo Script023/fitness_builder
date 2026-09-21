@@ -8,13 +8,9 @@ class HeaderWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String? nickname;
-    final user = ref.read(userProvider).user;
-    if (user != null) {
-      nickname = user.nickname;
-    } else {
-      nickname = null;
-    }
+    final user = ref.watch(userProvider).user;
+
+    print('HOME USER: $user');
     return Row(
       children: [
         Expanded(
@@ -27,7 +23,7 @@ class HeaderWidget extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        'Hi, $nickname',
+                        'Hi, ${user?.nickname ?? 'User'}',
                         style: GoogleFonts.poppins(
                           fontSize: 20,
                           fontWeight: FontWeight.w800,

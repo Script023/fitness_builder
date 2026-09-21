@@ -12,7 +12,8 @@ class SetUpGender extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedGender = ref.watch(userProvider).user?.gender;
+    print('>>> GENDER SCREEN BUILT');
+    final selectedGender = ref.watch(userProvider.select((state)=> state.user?.gender));
     final isMaleSelected = selectedGender == Gender.male;
     final isFemaleSelected = selectedGender == Gender.female;
     final canContinue = selectedGender != null;

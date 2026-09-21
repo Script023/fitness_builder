@@ -16,13 +16,22 @@ class SetUpWeight extends ConsumerStatefulWidget {
 }
 
 class _SetUpWeightState extends ConsumerState<SetUpWeight> {
-  final FixedExtentScrollController controller = FixedExtentScrollController(
-    initialItem: 27,
-  );
+  late final FixedExtentScrollController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    final weight =
+        ref.read(userProvider).user?.weight ??
+        Weight(value: 80, unit: WeightUnit.kg);
+    controller = FixedExtentScrollController(initialItem: weight.value - 1);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final weight = ref.watch(userProvider).user?.weight;
+    final weight = ref.watch(
+      userProvider.select((state) => state.user?.weight),
+    );
     final canContinue = weight != null;
     final selectedWeight = weight?.value;
     final selectedUnit = weight?.unit == WeightUnit.kg ? 'kg' : 'lb';

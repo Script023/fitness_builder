@@ -31,6 +31,7 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
 
   @override
   Widget build(BuildContext context) {
+    print('>>> ONBOARDING 1 BUILDING');
     return Scaffold(
       body: Stack(
         children: [

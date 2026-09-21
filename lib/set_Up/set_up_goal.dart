@@ -17,7 +17,7 @@ class SetUpGoal extends ConsumerStatefulWidget {
 class _SetUpGoalState extends ConsumerState<SetUpGoal> {
   @override
   Widget build(BuildContext context) {
-    final goal = ref.watch(userProvider).user?.goal;
+    final goal = ref.watch(userProvider.select((state) => state.user?.goal));
     final selectedGoalIndex = goal != null
         ? FitnessGoal.options.indexOf(goal)
         : null;

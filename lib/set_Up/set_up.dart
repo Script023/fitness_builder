@@ -10,6 +10,7 @@ class SetUpScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print('>>> SETUP SCREEN BUILT');
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
@@ -125,6 +126,7 @@ class SetUpScreen extends ConsumerWidget {
                     onTap: () {
                       ref.read(userProvider.notifier).setCurrentUser();
                       print('>>> NAVIGATING TO GENDER');
+                      print('SETUP USER: ${ref.read(userProvider).user}');
                       Navigator.push(
                         context,
                         MaterialPageRoute(

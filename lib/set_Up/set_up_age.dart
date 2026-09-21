@@ -14,12 +14,26 @@ class SetUpAge extends ConsumerStatefulWidget {
 }
 
 class _SetUpAgeState extends ConsumerState<SetUpAge> {
-  final FixedExtentScrollController controller = FixedExtentScrollController(
-    initialItem: 27,
-  );
+  late final FixedExtentScrollController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    final age = ref.read(userProvider).user?.age ?? 28;
+    controller = FixedExtentScrollController(initialItem: age - 1);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final selectedAge = ref.watch(userProvider).user?.age ?? 28;
+    final selectedAge = ref.watch(
+      userProvider.select((state) => state.user?.age),
+    );
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(

@@ -49,7 +49,9 @@ class _SetUpProfileState extends ConsumerState<SetUpProfile> {
 
   @override
   Widget build(BuildContext context) {
-    final user = ref.watch(userProvider).user;
+    print('>>> SETUP PROFILE BUILDING');
+    print('>>> PROFILE SCREEN BUILT');
+    final user = ref.watch(userProvider.select((state) => state.user));
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(

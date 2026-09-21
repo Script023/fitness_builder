@@ -1,3 +1,4 @@
+import 'package:fitness_builder/models/height.dart';
 import 'package:fitness_builder/set_Up/set_up_goal.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,12 +18,27 @@ class SetUpHeight extends ConsumerStatefulWidget {
 class _SetUpHeightState extends ConsumerState<SetUpHeight> {
   final String _selectedUnit = 'Cm';
 
-  final FixedExtentScrollController controller = FixedExtentScrollController(
-    initialItem: 27,
-  );
+  late final FixedExtentScrollController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    // this does not store the value of height in userstate but stores it locally
+    final height = ref.read(userProvider).user?.height ?? Height(value: 50);
+    controller = FixedExtentScrollController(initialItem: height.value - 1);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final height = ref.watch(userProvider).user?.height;
+    final height = ref.watch(
+      userProvider.select((state) => state.user?.height ?? Height(value: 50)),
+    );
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -117,7 +133,7 @@ class _SetUpHeightState extends ConsumerState<SetUpHeight> {
                   children: [
                     SizedBox(width: 145),
                     Text(
-                      '${height?.value}',
+                      '${height.value}',
                       style: GoogleFonts.poppins(
                         color: AppColors.textPrimary,
                         fontSize: 64,
@@ -167,8 +183,7 @@ class _SetUpHeightState extends ConsumerState<SetUpHeight> {
                                 childDelegate: ListWheelChildBuilderDelegate(
                                   childCount: 200,
                                   builder: (context, index) {
-                                    bool selected =
-                                        height?.value == 200 - index;
+                                    bool selected = height.value == 200 - index;
 
                                     return RotatedBox(
                                       quarterTurns: 0,
