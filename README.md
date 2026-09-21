@@ -3,8 +3,23 @@
 A new Flutter project.
 
 ## Getting Started
+## 📸 Screenshots
 
-This project is a starting point for a Flutter application.
+### Home Dashboard
+
+![Fitness Builder Home](screenshots/homepagescreen.png)
+
+### User Onboarding
+
+![Fitness Builder Onboarding](screenshots/onboardingscreen.png)
+
+### Authentication
+
+![Fitness Builder Authentication](screenshots/authentication.png)
+
+### Goal Selection
+
+![Fitness Builder Goal Selection](screenshots/goalpickerscreen.png)
 
 A few resources to get you started if this is your first Flutter project:
 
